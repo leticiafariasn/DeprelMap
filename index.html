@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="dark-mode">
+<body class="light-mode">
     <header>
         <div class="container header-container">
             <div class="logo">
@@ -23,10 +23,11 @@
                 </ul>
             </nav>
             <div class="theme-toggle">
-                <button id="theme-toggle-btn" aria-label="Alternar tema">
-                    <i data-lucide="sun" class="theme-icon"></i>
-                </button>
-            </div>
+    <button id="theme-toggle-btn" aria-label="Alternar tema">
+        <i data-lucide="sun" class="light-icon"></i>
+        <i data-lucide="moon" class="dark-icon"></i>
+    </button>
+</div>
         </div>
     </header>
 
@@ -36,27 +37,7 @@
                 <div class="hero-content">
                     <h2>Explorando a Estrutura Linguística do Nheengatu</h2>
                     <p>Uma ferramenta educativa para visualização e consulta de tags morfossintáticas no padrão Universal Dependencies (UD)</p>
-                    <button class="btn btn-primary">Começar Agora</button>
                 </div>
-                <div class="hero-image">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Business%20Multipurpose%20Black%20%26%20White%20Elementor%20WordPress%20Theme%20with%20Illustrations.jpg-RUHLO62E1jJJYrjwi1f8wh9ZLF45pA.jpeg" alt="Ilustração de análise linguística" class="hidden">
-                    <!-- Placeholder para ilustração -->
-                    <div class="illustration-placeholder">
-                        <div class="code-lines">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div class="code-circle"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="search-section">
-            <div class="container">
                 <div class="search-container">
                     <div class="search-box">
                         <i data-lucide="search"></i>
@@ -68,34 +49,8 @@
 
         <section id="pos-tags" class="content-section">
             <div class="container">
-                <h2>POS Tags <span class="subtitle">Part-of-Speech</span></h2>
+                <h2>POS Tags (Part-of-Speech)</h2>
                 <p class="section-description">Categorias gramaticais universais utilizadas para classificar palavras de acordo com sua função sintática.</p>
-                
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i data-lucide="type"></i>
-                        </div>
-                        <h3>NOUN</h3>
-                        <p>Palavras que denotam pessoas, lugares, objetos ou conceitos abstratos.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i data-lucide="activity"></i>
-                        </div>
-                        <h3>VERB</h3>
-                        <p>Palavras que expressam ações, processos ou estados.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i data-lucide="check-circle"></i>
-                        </div>
-                        <h3>ADJ</h3>
-                        <p>Palavras que modificam substantivos, descrevendo qualidades ou estados.</p>
-                    </div>
-                </div>
                 
                 <div class="cards-container" id="pos-tags-container">
                     <!-- Exemplo de card POS Tag -->
@@ -147,64 +102,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="stats-section">
-            <div class="container">
-                <h2>Estatísticas do Projeto</h2>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">17</div>
-                        <div class="stat-label">POS Tags</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">37</div>
-                        <div class="stat-label">Deprels</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">1.2K</div>
-                        <div class="stat-label">Exemplos</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Usuários</div>
-                    </div>
+                    
+                    <!-- Mais cards serão adicionados aqui -->
                 </div>
             </div>
         </section>
 
         <section id="deprels" class="content-section">
             <div class="container">
-                <h2>Deprels <span class="subtitle">Dependency Relations</span></h2>
+                <h2>Deprels (Dependency Relations)</h2>
                 <p class="section-description">Relações de dependência sintática entre palavras em uma sentença.</p>
-                
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i data-lucide="user"></i>
-                        </div>
-                        <h3>nsubj</h3>
-                        <p>Sujeito nominal de uma oração. Indica quem realiza a ação.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i data-lucide="target"></i>
-                        </div>
-                        <h3>obj</h3>
-                        <p>Objeto direto de um verbo. Indica o receptor da ação.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i data-lucide="git-merge"></i>
-                        </div>
-                        <h3>root</h3>
-                        <p>Elemento principal da sentença, geralmente o verbo principal.</p>
-                    </div>
-                </div>
                 
                 <div class="cards-container" id="deprels-container">
                     <!-- Exemplo de card Deprel -->
@@ -256,6 +163,8 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Mais cards serão adicionados aqui -->
                 </div>
             </div>
         </section>
@@ -303,14 +212,6 @@
                 </div>
             </div>
         </section>
-
-        <section class="cta-section">
-            <div class="container">
-                <h2>Comece a explorar o Nheengatu hoje</h2>
-                <p>Descubra a riqueza linguística de uma das línguas indígenas mais importantes do Brasil</p>
-                <button class="btn btn-primary">Iniciar Exploração</button>
-            </div>
-        </section>
     </main>
 
     <footer>
@@ -344,15 +245,13 @@
             // Alternar tema claro/escuro
             const themeToggleBtn = document.getElementById('theme-toggle-btn');
             themeToggleBtn.addEventListener('click', () => {
-                document.body.classList.toggle('light-mode');
                 document.body.classList.toggle('dark-mode');
                 localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
             });
             
             // Verificar tema salvo
-            if (localStorage.getItem('theme') === 'light') {
-                document.body.classList.add('light-mode');
-                document.body.classList.remove('dark-mode');
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
             }
             
             // Funcionalidade de busca
