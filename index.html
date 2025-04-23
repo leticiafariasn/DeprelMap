@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="light-mode">
+<body class="dark-mode">
     <header>
         <div class="container header-container">
             <div class="logo">
@@ -28,8 +28,7 @@
             </nav>
             <div class="theme-toggle">
                 <button id="theme-toggle-btn" aria-label="Alternar tema">
-                    <i data-lucide="sun" class="light-icon"></i>
-                    <i data-lucide="moon" class="dark-icon"></i>
+                    <i data-lucide="sun" class="theme-icon"></i>
                 </button>
             </div>
         </div>
@@ -40,7 +39,7 @@
             <div class="container">
                 <div class="hero-content">
                     <h2>Anotações Linguísticas em Nheengatu com Universal Dependencies</h2>
-                    <p>Repositório para consulta rápida de tags, deprels e exemplos anotados do treebank UD_Nheengatu-CompLin</p>
+                    <p>Repositório para consulta rápida de tags, deprels e exemplos<br>anotados do treebank UD_Nheengatu-CompLin</p>
                     <a href="#pos-tags" class="btn btn-primary">Explorar Tags</a>
                 </div>
                 <div class="search-container">
@@ -160,7 +159,7 @@
                                 <div class="example-text">
                                     <p class="nheengatu">Yané rumuára-itá u-pisika i <span class="highlight">pira</span>.</p>
                                     <p class="portuguese">Nossos companheiros pegaram seu <span class="highlight">peixe</span>.</p>
-                                    <p class="english">Our companions caught his <span class="highlight">fish</span>.</p>
+                                    <p class="english">Our companions caught his fish.</p>
                                 </div>
                                 <div class="example-notes">
                                     <p>Neste exemplo, "pira" (peixe) é o objeto direto do verbo "pisika" (pegar).</p>
@@ -247,35 +246,35 @@
                 <p class="section-description">Lista de termos usados na anotação morfossintática com explicação acessível.</p>
                 
                 <div class="glossary-container">
-                    <div class="glossary-item">
+                    <a href="#" class="glossary-item">
                         <h3>UPOS</h3>
                         <p>Universal Part-of-Speech. Categorias gramaticais universais que classificam as palavras de acordo com sua função sintática básica (ex: NOUN, VERB, ADJ).</p>
-                    </div>
+                    </a>
                     
-                    <div class="glossary-item">
+                    <a href="#" class="glossary-item">
                         <h3>XPOS</h3>
                         <p>Language-specific Part-of-Speech. Categorias gramaticais específicas de cada língua, que complementam as UPOS com informações mais detalhadas.</p>
-                    </div>
+                    </a>
                     
-                    <div class="glossary-item">
+                    <a href="#" class="glossary-item">
                         <h3>Deprel</h3>
                         <p>Dependency Relation. Relação sintática entre palavras em uma sentença, indicando como elas se conectam (ex: nsubj, obj, advmod).</p>
-                    </div>
+                    </a>
                     
-                    <div class="glossary-item">
+                    <a href="#" class="glossary-item">
                         <h3>Treebank</h3>
                         <p>Banco de árvores sintáticas. Conjunto de textos anotados com informações morfossintáticas e relações de dependência.</p>
-                    </div>
+                    </a>
                     
-                    <div class="glossary-item">
+                    <a href="#" class="glossary-item">
                         <h3>CoNLL-U</h3>
                         <p>Formato de arquivo usado para representar anotações linguísticas no padrão Universal Dependencies, com 10 campos separados por tabulações.</p>
-                    </div>
+                    </a>
                     
-                    <div class="glossary-item">
+                    <a href="#" class="glossary-item">
                         <h3>Universal Dependencies (UD)</h3>
                         <p>Projeto que busca desenvolver anotações morfossintáticas consistentes entre diferentes línguas, facilitando análises linguísticas comparativas.</p>
-                    </div>
+                    </a>
                     
                     <!-- Mais itens serão adicionados aqui -->
                 </div>
@@ -316,12 +315,12 @@
                             <p>complin@ufc.br</p>
                         </div>
                         <div class="contact-item">
-                            <i data-lucide="map-pin"></i>
-                            <p>Universidade Federal do Ceará<br>Centro de Humanidades<br>Fortaleza, CE</p>
-                        </div>
-                        <div class="contact-item">
                             <i data-lucide="github"></i>
                             <p><a href="https://github.com/complin" target="_blank">github.com/complin</a></p>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="map-pin"></i>
+                            <p>Universidade Federal do Ceará<br>Centro de Humanidades<br>Fortaleza, CE</p>
                         </div>
                     </div>
                 </div>
@@ -333,7 +332,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="logo-complin.jpg" alt="Logo COMPLIN" class="logo-img-small">
+                    <img src="logo-complin.jpg" alt="Logo COMPLIN" class="logo-img-footer">
                     <div>
                         <h2>COMPLIN</h2>
                         <p>Computação e Linguagem Natural - UFC</p>
@@ -367,13 +366,26 @@
             const themeToggleBtn = document.getElementById('theme-toggle-btn');
             themeToggleBtn.addEventListener('click', () => {
                 document.body.classList.toggle('dark-mode');
+                document.body.classList.toggle('light-mode');
                 localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
             });
             
             // Verificar tema salvo
-            if (localStorage.getItem('theme') === 'dark') {
-                document.body.classList.add('dark-mode');
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.remove('dark-mode');
+                document.body.classList.add('light-mode');
             }
+            
+            // Rolagem suave para links de navegação
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
             
             // Funcionalidade de busca
             const searchInput = document.getElementById('search-input');
