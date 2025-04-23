@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeprelMap - Visualizador de Tags Morfossintáticas para Nheengatu</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="light-mode">
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>DeprelMap</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#pos-tags">POS Tags</a></li>
+                    <li><a href="#deprels">Deprels</a></li>
+                    <li><a href="#anotacoes">Anotações</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn" aria-label="Alternar tema">
+                    <i data-lucide="sun" class="light-icon"></i>
+                    <i data-lucide="moon" class="dark-icon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Explorando a Estrutura Linguística do Nheengatu</h2>
+                    <p>Uma ferramenta educativa para visualização e consulta de tags morfossintáticas no padrão Universal Dependencies (UD)</p>
+                </div>
+                <div class="search-container">
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="search-input" placeholder="Buscar tags ou relações...">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pos-tags" class="content-section">
+            <div class="container">
+                <h2>POS Tags (Part-of-Speech)</h2>
+                <p class="section-description">Categorias gramaticais universais utilizadas para classificar palavras de acordo com sua função sintática.</p>
+                
+                <div class="cards-container" id="pos-tags-container">
+                    <!-- Exemplo de card POS Tag -->
+                    <div class="card" data-tag="NOUN">
+                        <div class="card-header">
+                            <h3>NOUN</h3>
+                            <span class="tag">Substantivo</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="definition">
+                                <h4>Definição</h4>
+                                <p>Palavras que denotam pessoas, lugares, objetos, atividades ou conceitos abstratos.</p>
+                            </div>
+                            <div class="example">
+                                <h4>Exemplo</h4>
+                                <div class="example-text">
+                                    <p class="nheengatu"><span class="highlight">Yané</span> rumuára-itá u-pisika i <span class="highlight">pira</span>.</p>
+                                    <p class="portuguese">Nossos companheiros pegaram seu <span class="highlight">peixe</span>.</p>
+                                    <p class="english">Our companions caught his <span class="highlight">fish</span>.</p>
+                                </div>
+                                <div class="example-notes">
+                                    <p>Neste exemplo, "pira" (peixe) é um substantivo que representa um objeto concreto.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Exemplo de card POS Tag -->
+                    <div class="card" data-tag="VERB">
+                        <div class="card-header">
+                            <h3>VERB</h3>
+                            <span class="tag">Verbo</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="definition">
+                                <h4>Definição</h4>
+                                <p>Palavras que expressam ações, processos ou estados.</p>
+                            </div>
+                            <div class="example">
+                                <h4>Exemplo</h4>
+                                <div class="example-text">
+                                    <p class="nheengatu">Yané rumuára-itá u-<span class="highlight">pisika</span> i pira.</p>
+                                    <p class="portuguese">Nossos companheiros <span class="highlight">pegaram</span> seu peixe.</p>
+                                    <p class="english">Our companions <span class="highlight">caught</span> his fish.</p>
+                                </div>
+                                <div class="example-notes">
+                                    <p>Neste exemplo, "pisika" (pegar) é um verbo que expressa uma ação.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mais cards serão adicionados aqui -->
+                </div>
+            </div>
+        </section>
+
+        <section id="deprels" class="content-section">
+            <div class="container">
+                <h2>Deprels (Dependency Relations)</h2>
+                <p class="section-description">Relações de dependência sintática entre palavras em uma sentença.</p>
+                
+                <div class="cards-container" id="deprels-container">
+                    <!-- Exemplo de card Deprel -->
+                    <div class="card" data-tag="nsubj">
+                        <div class="card-header">
+                            <h3>nsubj</h3>
+                            <span class="tag">Sujeito Nominal</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="definition">
+                                <h4>Definição</h4>
+                                <p>Sujeito nominal de uma oração. Indica quem realiza a ação expressa pelo verbo.</p>
+                            </div>
+                            <div class="example">
+                                <h4>Exemplo</h4>
+                                <div class="example-text">
+                                    <p class="nheengatu"><span class="highlight">Yané rumuára-itá</span> u-pisika i pira.</p>
+                                    <p class="portuguese"><span class="highlight">Nossos companheiros</span> pegaram seu peixe.</p>
+                                    <p class="english"><span class="highlight">Our companions</span> caught his fish.</p>
+                                </div>
+                                <div class="example-notes">
+                                    <p>Neste exemplo, "Yané rumuára-itá" (Nossos companheiros) é o sujeito nominal do verbo "pisika" (pegar).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Exemplo de card Deprel -->
+                    <div class="card" data-tag="obj">
+                        <div class="card-header">
+                            <h3>obj</h3>
+                            <span class="tag">Objeto Direto</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="definition">
+                                <h4>Definição</h4>
+                                <p>Objeto direto de um verbo. Indica o receptor da ação expressa pelo verbo.</p>
+                            </div>
+                            <div class="example">
+                                <h4>Exemplo</h4>
+                                <div class="example-text">
+                                    <p class="nheengatu">Yané rumuára-itá u-pisika i <span class="highlight">pira</span>.</p>
+                                    <p class="portuguese">Nossos companheiros pegaram seu <span class="highlight">peixe</span>.</p>
+                                    <p class="english">Our companions caught his <span class="highlight">fish</span>.</p>
+                                </div>
+                                <div class="example-notes">
+                                    <p>Neste exemplo, "pira" (peixe) é o objeto direto do verbo "pisika" (pegar).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mais cards serão adicionados aqui -->
+                </div>
+            </div>
+        </section>
+
+        <section id="anotacoes" class="content-section">
+            <div class="container">
+                <h2>Minhas Anotações</h2>
+                <p class="section-description">Espaço para suas anotações pessoais sobre tags e relações.</p>
+                
+                <div class="notes-container">
+                    <div class="notes-editor">
+                        <textarea id="notes-area" placeholder="Adicione suas anotações aqui..."></textarea>
+                        <div class="notes-actions">
+                            <button id="save-notes" class="btn">Salvar</button>
+                            <button id="clear-notes" class="btn btn-outline">Limpar</button>
+                        </div>
+                    </div>
+                    <div class="notes-preview">
+                        <h3>Suas anotações salvas</h3>
+                        <div id="saved-notes">
+                            <p class="empty-notes">Nenhuma anotação salva ainda.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="content-section">
+            <div class="container">
+                <h2>Sobre o Projeto</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>O DeprelMap é uma ferramenta educativa desenvolvida para auxiliar estudantes de Letras a compreender as categorias gramaticais (UPOS, XPOS) e relações de dependência (deprels) utilizadas no Universal Dependencies (UD) a partir de exemplos em nheengatu.</p>
+                        <p>Os exemplos apresentados são extraídos da obra Christu Muhençáua (1898) e do treebank UD_Nheengatu-CompLin, oferecendo uma perspectiva real sobre a estrutura linguística do nheengatu.</p>
+                        <p>Este projeto visa facilitar o acesso ao conhecimento linguístico computacional para estudantes sem formação técnica na área, contribuindo para a preservação e estudo das línguas indígenas brasileiras.</p>
+                    </div>
+                    <div class="about-links">
+                        <h3>Recursos Adicionais</h3>
+                        <ul>
+                            <li><a href="https://universaldependencies.org/" target="_blank">Universal Dependencies</a></li>
+                            <li><a href="https://github.com/UniversalDependencies/UD_Nheengatu-CompLin" target="_blank">UD_Nheengatu-CompLin no GitHub</a></li>
+                            <li><a href="#" target="_blank">Documentação do Projeto</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>DeprelMap</h2>
+                    <p>Explorando a estrutura linguística do nheengatu</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#pos-tags">POS Tags</a></li>
+                        <li><a href="#deprels">Deprels</a></li>
+                        <li><a href="#anotacoes">Anotações</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                    </ul>
+                </div>
+                <div class="footer-credits">
+                    <p>&copy; 2023 DeprelMap. Todos os direitos reservados.</p>
+                    <p>Hospedado no GitHub Pages</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializar ícones Lucide
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            
+            // Alternar tema claro/escuro
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            themeToggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+            });
+            
+            // Verificar tema salvo
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+            
+            // Funcionalidade de busca
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                const allCards = document.querySelectorAll('.card');
+                
+                allCards.forEach(card => {
+                    const tag = card.getAttribute('data-tag').toLowerCase();
+                    const cardContent = card.textContent.toLowerCase();
+                    
+                    if (tag.includes(searchTerm) || cardContent.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Funcionalidade de anotações
+            const notesArea = document.getElementById('notes-area');
+            const savedNotes = document.getElementById('saved-notes');
+            const saveNotesBtn = document.getElementById('save-notes');
+            const clearNotesBtn = document.getElementById('clear-notes');
+            
+            // Carregar anotações salvas
+            if (localStorage.getItem('notes')) {
+                savedNotes.innerHTML = localStorage.getItem('notes');
+            }
+            
+            saveNotesBtn.addEventListener('click', () => {
+                if (notesArea.value.trim() !== '') {
+                    const date = new Date();
+                    const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+                    
+                    const noteHTML = `
+                        <div class="note">
+                            <div class="note-header">
+                                <span class="note-date">${formattedDate}</span>
+                            </div>
+                            <div class="note-content">
+                                ${notesArea.value.replace(/\n/g, '<br>')}
+                            </div>
+                        </div>
+                    `;
+                    
+                    savedNotes.innerHTML = noteHTML + savedNotes.innerHTML;
+                    localStorage.setItem('notes', savedNotes.innerHTML);
+                    notesArea.value = '';
+                    
+                    // Remover mensagem de "nenhuma anotação"
+                    const emptyNotes = savedNotes.querySelector('.empty-notes');
+                    if (emptyNotes) {
+                        emptyNotes.remove();
+                    }
+                }
+            });
+            
+            clearNotesBtn.addEventListener('click', () => {
+                notesArea.value = '';
+            });
+        });
+    </script>
+</body>
+</html>
