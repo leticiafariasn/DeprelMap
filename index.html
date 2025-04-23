@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeprelMap - Visualizador de Tags Morfossintáticas para Nheengatu</title>
+    <title>DeprelMap - COMPLIN UFC</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -12,14 +12,18 @@
     <header>
         <div class="container header-container">
             <div class="logo">
+                <img src="complin-light.svg" alt="Logo COMPLIN" class="logo-img">
                 <h1>DeprelMap</h1>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#pos-tags">POS Tags</a></li>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#pos-tags">Tags UD</a></li>
                     <li><a href="#deprels">Deprels</a></li>
-                    <li><a href="#anotacoes">Anotações</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#exemplos">Exemplos</a></li>
+                    <li><a href="#glossario">Glossário</a></li>
+                    <li><a href="#sobre">Sobre o Projeto</a></li>
+                    <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
             <div class="theme-toggle">
@@ -32,16 +36,17 @@
     </header>
 
     <main>
-        <section class="hero">
+        <section id="inicio" class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h2>Explorando a Estrutura Linguística do Nheengatu</h2>
-                    <p>Uma ferramenta educativa para visualização e consulta de tags morfossintáticas no padrão Universal Dependencies (UD)</p>
+                    <h2>Anotações Linguísticas em Nheengatu com Universal Dependencies</h2>
+                    <p>Repositório para consulta rápida de tags, deprels e exemplos anotados do treebank UD_Nheengatu-CompLin</p>
+                    <a href="#pos-tags" class="btn btn-primary">Explorar Tags</a>
                 </div>
                 <div class="search-container">
                     <div class="search-box">
                         <i data-lucide="search"></i>
-                        <input type="text" id="search-input" placeholder="Buscar tags ou relações...">
+                        <input type="text" id="search-input" placeholder="Buscar tags, relações ou exemplos...">
                     </div>
                 </div>
             </div>
@@ -49,7 +54,7 @@
 
         <section id="pos-tags" class="content-section">
             <div class="container">
-                <h2>POS Tags (Part-of-Speech)</h2>
+                <h2>Tags UD (Part-of-Speech)</h2>
                 <p class="section-description">Categorias gramaticais universais utilizadas para classificar palavras de acordo com sua função sintática.</p>
                 
                 <div class="cards-container" id="pos-tags-container">
@@ -169,25 +174,110 @@
             </div>
         </section>
 
-        <section id="anotacoes" class="content-section">
+        <section id="exemplos" class="content-section">
             <div class="container">
-                <h2>Minhas Anotações</h2>
-                <p class="section-description">Espaço para suas anotações pessoais sobre tags e relações.</p>
+                <h2>Exemplos Práticos</h2>
+                <p class="section-description">Sentenças anotadas da obra Christu Muhençáua (1898), apresentadas com destaque visual.</p>
                 
-                <div class="notes-container">
-                    <div class="notes-editor">
-                        <textarea id="notes-area" placeholder="Adicione suas anotações aqui..."></textarea>
-                        <div class="notes-actions">
-                            <button id="save-notes" class="btn">Salvar</button>
-                            <button id="clear-notes" class="btn btn-outline">Limpar</button>
+                <div class="examples-container">
+                    <div class="example-card">
+                        <div class="example-header">
+                            <h3>Sentença #1</h3>
+                            <button class="btn btn-small btn-outline toggle-conllu">Exibir Anotação</button>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-text-full">
+                                <p class="nheengatu">Yané rumuára-itá u-pisika i pira.</p>
+                                <p class="portuguese">Nossos companheiros pegaram seu peixe.</p>
+                                <p class="english">Our companions caught his fish.</p>
+                            </div>
+                            <div class="conllu-data hidden">
+                                <pre>
+# sent_id = christu-001
+# text = Yané rumuára-itá u-pisika i pira.
+# text_pt = Nossos companheiros pegaram seu peixe.
+# text_en = Our companions caught his fish.
+1	Yané	yané	PRON	pron	Case=Nom|Number=Plur|Person=1|PronType=Prs	2	nmod:poss	_	_
+2	rumuára-itá	rumuára	NOUN	n	Number=Plur	4	nsubj	_	_
+3	u-	u-	PRON	pron	Number=Sing|Person=3|PronType=Prs	4	nsubj	_	_
+4	pisika	pisika	VERB	v	_	0	root	_	_
+5	i	i	PRON	pron	Case=Gen|Number=Sing|Person=3|PronType=Prs	6	nmod:poss	_	_
+6	pira	pira	NOUN	n	_	4	obj	_	_
+7	.	.	PUNCT	punct	_	4	punct	_	_
+                                </pre>
+                            </div>
                         </div>
                     </div>
-                    <div class="notes-preview">
-                        <h3>Suas anotações salvas</h3>
-                        <div id="saved-notes">
-                            <p class="empty-notes">Nenhuma anotação salva ainda.</p>
+                    
+                    <div class="example-card">
+                        <div class="example-header">
+                            <h3>Sentença #2</h3>
+                            <button class="btn btn-small btn-outline toggle-conllu">Exibir Anotação</button>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-text-full">
+                                <p class="nheengatu">Aé u-senúi yandé.</p>
+                                <p class="portuguese">Ele nos chamou.</p>
+                                <p class="english">He called us.</p>
+                            </div>
+                            <div class="conllu-data hidden">
+                                <pre>
+# sent_id = christu-002
+# text = Aé u-senúi yandé.
+# text_pt = Ele nos chamou.
+# text_en = He called us.
+1	Aé	aé	PRON	pron	Case=Nom|Number=Sing|Person=3|PronType=Prs	3	nsubj	_	_
+2	u-	u-	PRON	pron	Number=Sing|Person=3|PronType=Prs	3	nsubj	_	_
+3	senúi	senúi	VERB	v	_	0	root	_	_
+4	yandé	yandé	PRON	pron	Case=Acc|Number=Plur|Person=1|PronType=Prs	3	obj	_	_
+5	.	.	PUNCT	punct	_	3	punct	_	_
+                                </pre>
+                            </div>
                         </div>
                     </div>
+                    
+                    <!-- Mais exemplos serão adicionados aqui -->
+                </div>
+            </div>
+        </section>
+
+        <section id="glossario" class="content-section">
+            <div class="container">
+                <h2>Glossário</h2>
+                <p class="section-description">Lista de termos usados na anotação morfossintática com explicação acessível.</p>
+                
+                <div class="glossary-container">
+                    <div class="glossary-item">
+                        <h3>UPOS</h3>
+                        <p>Universal Part-of-Speech. Categorias gramaticais universais que classificam as palavras de acordo com sua função sintática básica (ex: NOUN, VERB, ADJ).</p>
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <h3>XPOS</h3>
+                        <p>Language-specific Part-of-Speech. Categorias gramaticais específicas de cada língua, que complementam as UPOS com informações mais detalhadas.</p>
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <h3>Deprel</h3>
+                        <p>Dependency Relation. Relação sintática entre palavras em uma sentença, indicando como elas se conectam (ex: nsubj, obj, advmod).</p>
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <h3>Treebank</h3>
+                        <p>Banco de árvores sintáticas. Conjunto de textos anotados com informações morfossintáticas e relações de dependência.</p>
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <h3>CoNLL-U</h3>
+                        <p>Formato de arquivo usado para representar anotações linguísticas no padrão Universal Dependencies, com 10 campos separados por tabulações.</p>
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <h3>Universal Dependencies (UD)</h3>
+                        <p>Projeto que busca desenvolver anotações morfossintáticas consistentes entre diferentes línguas, facilitando análises linguísticas comparativas.</p>
+                    </div>
+                    
+                    <!-- Mais itens serão adicionados aqui -->
                 </div>
             </div>
         </section>
@@ -197,17 +287,42 @@
                 <h2>Sobre o Projeto</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>O DeprelMap é uma ferramenta educativa desenvolvida para auxiliar estudantes de Letras a compreender as categorias gramaticais (UPOS, XPOS) e relações de dependência (deprels) utilizadas no Universal Dependencies (UD) a partir de exemplos em nheengatu.</p>
-                        <p>Os exemplos apresentados são extraídos da obra Christu Muhençáua (1898) e do treebank UD_Nheengatu-CompLin, oferecendo uma perspectiva real sobre a estrutura linguística do nheengatu.</p>
-                        <p>Este projeto visa facilitar o acesso ao conhecimento linguístico computacional para estudantes sem formação técnica na área, contribuindo para a preservação e estudo das línguas indígenas brasileiras.</p>
+                        <p>O DeprelMap é uma ferramenta educativa desenvolvida pelo grupo COMPLIN (Computação e Linguagem Natural) da UFC como parte de um projeto PIBIC, focado na anotação morfossintática da língua nheengatu seguindo o padrão Universal Dependencies (UD).</p>
+                        
+                        <p>A obra analisada, <em>Christu Muhençáua</em> (1898), de Aguiar, representa um importante documento histórico da língua nheengatu, também conhecida como Língua Geral Amazônica. A criação deste treebank contribui para a documentação e preservação digital desta língua indígena brasileira.</p>
+                        
+                        <p>O objetivo principal deste projeto é facilitar o acesso ao conhecimento linguístico computacional para estudantes e pesquisadores, além de contribuir para o desenvolvimento de recursos linguísticos digitais para línguas indígenas brasileiras.</p>
                     </div>
                     <div class="about-links">
                         <h3>Recursos Adicionais</h3>
                         <ul>
                             <li><a href="https://universaldependencies.org/" target="_blank">Universal Dependencies</a></li>
                             <li><a href="https://github.com/UniversalDependencies/UD_Nheengatu-CompLin" target="_blank">UD_Nheengatu-CompLin no GitHub</a></li>
+                            <li><a href="https://complin.org/" target="_blank">Grupo COMPLIN - UFC</a></li>
                             <li><a href="#" target="_blank">Documentação do Projeto</a></li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="content-section">
+            <div class="container">
+                <h2>Contato</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i data-lucide="mail"></i>
+                            <p>complin@ufc.br</p>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="map-pin"></i>
+                            <p>Universidade Federal do Ceará<br>Centro de Humanidades<br>Fortaleza, CE</p>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="github"></i>
+                            <p><a href="https://github.com/complin" target="_blank">github.com/complin</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -218,20 +333,26 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h2>DeprelMap</h2>
-                    <p>Explorando a estrutura linguística do nheengatu</p>
+                    <img src="complin-light.svg" alt="Logo COMPLIN" class="logo-img-small">
+                    <div>
+                        <h2>COMPLIN</h2>
+                        <p>Computação e Linguagem Natural - UFC</p>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <ul>
-                        <li><a href="#pos-tags">POS Tags</a></li>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#pos-tags">Tags UD</a></li>
                         <li><a href="#deprels">Deprels</a></li>
-                        <li><a href="#anotacoes">Anotações</a></li>
+                        <li><a href="#exemplos">Exemplos</a></li>
+                        <li><a href="#glossario">Glossário</a></li>
                         <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#contato">Contato</a></li>
                     </ul>
                 </div>
                 <div class="footer-credits">
-                    <p>&copy; 2023 DeprelMap. Todos os direitos reservados.</p>
-                    <p>Hospedado no GitHub Pages</p>
+                    <p>&copy; 2023 COMPLIN - UFC. Todos os direitos reservados.</p>
+                    <p>Desenvolvido com apoio do CNPq</p>
                 </div>
             </div>
         </div>
@@ -272,47 +393,14 @@
                 });
             });
             
-            // Funcionalidade de anotações
-            const notesArea = document.getElementById('notes-area');
-            const savedNotes = document.getElementById('saved-notes');
-            const saveNotesBtn = document.getElementById('save-notes');
-            const clearNotesBtn = document.getElementById('clear-notes');
-            
-            // Carregar anotações salvas
-            if (localStorage.getItem('notes')) {
-                savedNotes.innerHTML = localStorage.getItem('notes');
-            }
-            
-            saveNotesBtn.addEventListener('click', () => {
-                if (notesArea.value.trim() !== '') {
-                    const date = new Date();
-                    const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
-                    
-                    const noteHTML = `
-                        <div class="note">
-                            <div class="note-header">
-                                <span class="note-date">${formattedDate}</span>
-                            </div>
-                            <div class="note-content">
-                                ${notesArea.value.replace(/\n/g, '<br>')}
-                            </div>
-                        </div>
-                    `;
-                    
-                    savedNotes.innerHTML = noteHTML + savedNotes.innerHTML;
-                    localStorage.setItem('notes', savedNotes.innerHTML);
-                    notesArea.value = '';
-                    
-                    // Remover mensagem de "nenhuma anotação"
-                    const emptyNotes = savedNotes.querySelector('.empty-notes');
-                    if (emptyNotes) {
-                        emptyNotes.remove();
-                    }
-                }
-            });
-            
-            clearNotesBtn.addEventListener('click', () => {
-                notesArea.value = '';
+            // Funcionalidade de exibir/ocultar anotações CoNLL-U
+            const toggleButtons = document.querySelectorAll('.toggle-conllu');
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const conlluData = button.closest('.example-card').querySelector('.conllu-data');
+                    conlluData.classList.toggle('hidden');
+                    button.textContent = conlluData.classList.contains('hidden') ? 'Exibir Anotação' : 'Ocultar Anotação';
+                });
             });
         });
     </script>
